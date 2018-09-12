@@ -3,6 +3,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const os = require('os')
+let IPv4 = '127.0.0.1';
+
+for(let i = 0; i < os.networkInterfaces().en0.length; i++) {
+  if(os.networkInterfaces().en0[i].family === 'IPv4') {
+    IPv4 = os.networkInterfaces().en0[i].address;
+  }
+}
 
 module.exports = {
   dev: {
@@ -13,7 +21,7 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: IPv4 || 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

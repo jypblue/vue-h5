@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     index
   </div>
 </template>
@@ -10,6 +10,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style lang="scss" src="./home.scss"></style>

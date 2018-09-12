@@ -11,6 +11,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin');
 
 const env = require('../config/prod.env')
 
@@ -118,6 +119,20 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ]),
     new LodashModuleReplacementPlugin(),
+    new SkeletonWebpackPlugin({
+      webpackConfig: require('./webpack.skeleton.conf'),
+      quiet: true,
+      minimize: true,
+      router: {
+        mode: 'history',
+        routes: [
+          {
+            path: '/',
+            skeletonId: 'home'
+          },
+        ]
+      }
+  })
   ]
 })
 
