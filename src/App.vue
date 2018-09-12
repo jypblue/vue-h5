@@ -9,5 +9,3 @@ export default {
   name: 'App'
 }
 </script>
-
-<style lang="scss" src="./styles/base.scss"></style>

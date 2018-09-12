@@ -5,10 +5,10 @@
 
   function changeRem () {
       width = docEl.getBoundingClientRect().width;
-      width = width > 1024 ? 640 : width;
       if (last === width) { return; }
       last = width;
-      root.rem = width / 3.75;
+      root.rem = width / 7.5;
+      root.rem = root.rem > 100 ? 100 : root.rem;
       if (/ZTE U930_TD/.test(navigator.userAgent)) {
           root.rem = root.rem * 1.13;
       }
@@ -19,11 +19,11 @@
 
   root.addEventListener('resize', function () {
       clearTimeout(timer);
-      timer = setTimeout(changeRem, 100);
+      timer = setTimeout(changeRem, 200);
   });
 
   root.addEventListener('orientationchange', function () {
       clearTimeout(timer);
-      timer = setTimeout(changeRem, 100);
+      timer = setTimeout(changeRem, 200);
   });
 })(window, undefined);
